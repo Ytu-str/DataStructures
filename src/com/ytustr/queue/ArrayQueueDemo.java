@@ -9,6 +9,8 @@ public class ArrayQueueDemo {
     public static void main(String[] args) {
 
     }
+
+}
 class ArrayQueue{
     private int maxSize;
     /**
@@ -78,5 +80,3 @@ class ArrayQueue{
         return arr[front+1];
     }
 }
-}
-
