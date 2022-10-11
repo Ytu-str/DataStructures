@@ -88,7 +88,7 @@ public class SparseArray {
             for (int i = 0; i < split.length; i++) {
                 chess3[num][i] = Integer.parseInt(split[i]);
             }
-            num ++;
+            num++;
         }
         bufferedReader.close();
 
