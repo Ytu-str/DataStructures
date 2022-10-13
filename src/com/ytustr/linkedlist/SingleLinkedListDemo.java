@@ -1,5 +1,7 @@
 package com.ytustr.linkedlist;
 
+import java.util.Stack;
+
 /**
  * 单链表
  *
@@ -17,6 +19,7 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(hero4);
         singleLinkedList.addByOrder(hero3);
         singleLinkedList.list();
+        System.out.println(singleLinkedList.getLength());
     }
 }
 class SingleLinkedList{
@@ -122,6 +125,84 @@ class SingleLinkedList{
             temp.next = temp.next.next;
         } else {
             System.out.println("不存在的节点......");
+        }
+    }
+
+    public int getLength(){
+        if (head.next ==null){
+            return 0;
+        }
+        HeroNode temp = head;
+        int length = 0;
+        while (true){
+            if (temp.next == null){
+                break;
+            }
+            length++;
+            temp = temp.next;
+        }
+        return length;
+    }
+
+
+    /**
+     * 查找单链表中倒数第K个节点
+     *
+     * 编写一个方法，接收head节点，index
+     * index表示倒数第几个
+     * 先把链表从头到尾遍历，得到链表的长度
+     * 的到size后，再次遍历（size-index)次
+     */
+    public HeroNode findLastIndexNode(HeroNode head, int index) {
+        if (head.next == null){
+            return null;
+        }
+        int size = getLength() - index;
+        if (size <= 0 || index > size){
+            return null;
+        }
+        HeroNode temp = head.next;
+        for (int i = 0; i < size; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    /**
+     * 反转单链表
+     * @param head
+     */
+    public void reverseList(HeroNode head){
+        if (head.next == null || head.next.next == null){
+            return;
+        }
+        HeroNode temp = head.next;
+        HeroNode next = null;
+        HeroNode newHeadNode = new HeroNode(0,"","");
+        while (temp != null){
+            next = temp.next;
+            temp.next = newHeadNode.next;
+            newHeadNode.next = temp;
+            temp = next;
+        }
+        head.next = newHeadNode.next;
+    }
+
+    /**
+     * 使用栈进行逆序遍历
+     */
+    public void reversePrint(HeroNode head){
+        if (head.next == null){
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = head.next;
+        while (cur != null){
+            stack.push(cur);
+            cur = cur.next;
+        }
+        while (stack.size() > 0){
+            System.out.println(stack.pop());
         }
     }
 
