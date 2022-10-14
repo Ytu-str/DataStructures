@@ -28,6 +28,10 @@ class SingleLinkedList{
      */
     private HeroNode head = new HeroNode(0,"","");
 
+    public HeroNode getHead(){
+        return head;
+    }
+
     /**
      * 当不考虑编号顺序时，找到当前链表的最后一个节点，指向新节点
      * @param node
